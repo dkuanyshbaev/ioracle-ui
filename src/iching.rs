@@ -30,8 +30,7 @@ pub fn full_answer(connection: &SqliteConnection, answer: Answer) -> IOracleResu
     let core_related_second =
         Trigram::get_by_binary(&connection, (&related_binary[2..5]).to_string())?;
 
-    // TODO: move all generative functions to this place
-    let generative_answer = "----".to_string();
+    let generative_answer = generative_answer(&hexagram_binary);
 
     Ok(FullAnswer {
         answer,
@@ -49,4 +48,10 @@ pub fn full_answer(connection: &SqliteConnection, answer: Answer) -> IOracleResu
         core_related_second,
         generative_answer,
     })
+}
+
+fn generative_answer(hexagram: &String) -> String {
+    println!("{}", hexagram);
+
+    "----".to_string()
 }

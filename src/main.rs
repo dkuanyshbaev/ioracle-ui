@@ -12,23 +12,34 @@ extern crate serde_derive;
 #[macro_use]
 extern crate diesel;
 
-mod config;
 mod errors;
 mod iching;
 mod models;
 mod schema;
 mod views;
 
-use config::Config;
 use rocket_contrib::serve::StaticFiles;
 use rocket_contrib::templates::Template;
-use std::{fs, path::Path, process};
+use std::{env, fs, path::Path, process};
 
 const IORACLE_SEND: &str = "/tmp/ioracle.send";
 const IORACLE_RETURN: &str = "/tmp/ioracle.return";
 
 #[database("ioracle")]
 pub struct Db(diesel::SqliteConnection);
+
+pub struct Config {
+    pub username: String,
+    pub password: String,
+}
+
+impl Config {
+    pub fn new() -> Result<Config, env::VarError> {
+        let username = env::var("USERNAME")?;
+        let password = env::var("PASSWORD")?;
+        Ok(Config { username, password })
+    }
+}
 
 fn main() {
     let config = Config::new().unwrap_or_else(|err| {
