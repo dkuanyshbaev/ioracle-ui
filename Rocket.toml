@@ -1,0 +1,2 @@
+[global.databases]
+ioracle = { url = "./db/ioracle.db" }

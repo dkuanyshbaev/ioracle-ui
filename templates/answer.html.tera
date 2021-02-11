@@ -1,0 +1,186 @@
+{% extends "layout" %}
+
+{% block content %}
+<div class="text-center cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="/static/img/solid-fwd.gif" id="loader" width=42px>
+                    <!--
+                    <h1>☰</h1>
+                    -->
+                </div>
+                <div class="col-md-8">
+                    <h1 class="cover-heading">I ORACLE</h1>
+                </div>
+                <div class="col-md-2">
+                    <img src="/static/img/solid-bwd.gif" id="loader" width=42px>
+                    <!--
+                    <h1>☷</h1>
+                    -->
+                </div>
+            </div>
+        </div>
+
+        <h4>NATURE BASED ETHICAL GUIDANCE SYSTEM</h4>
+        <h4>FOR MAN AND MACHINE</h4>
+        <hr>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="cover-heading">PRIMARY</h4>
+                    <p>{{hexagram.king_wen_order}}</p>
+                    <p>{{hexagram.hatcher | replace(from="_", to=" ")}}</p>
+                    <p>{{hexagram.binary}}</p>
+
+                    <h1 class="big_font">{{second_trigram.image}}</h1>
+                    <p>{{second_trigram.name | replace(from="_", to=" ")}}</p>
+                    <h1 class="big_font">{{first_trigram.image}}</h1>
+                    <p>{{first_trigram.name | replace(from="_", to=" ")}}</p>
+
+                    <h1 class="big_font">{{hexagram.gua}}</h1>
+                    <p>{{hexagram.pin_yin | replace(from="_", to=" ")}}</p>
+                    <h1>{{hexagram.character}}</h1>
+
+                    <hr>
+
+                    <p>{{second_trigram.name | replace(from="_", to=" ")}}</p>
+                    <p>over</p>
+                    <p>{{first_trigram.name | replace(from="_", to=" ")}}</p>
+
+                    <p>{{hexagram.shao_yong_order}}</p>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="cover-heading">RELATED</h4>
+                    <p>{{related.king_wen_order}}</p>
+                    <p>{{related.hatcher | replace(from="_", to=" ")}}</p>
+                    <p>{{related.binary}}</p>
+
+                    <h1 class="big_font">{{second_related.image}}</h1>
+                    <p>{{second_related.name | replace(from="_", to=" ")}}</p>
+                    <h1 class="big_font">{{first_related.image}}</h1>
+                    <p>{{first_related.name | replace(from="_", to=" ")}}</p>
+
+                    <h1 class="big_font">{{related.gua}}</h1>
+                    <p>{{related.pin_yin | replace(from="_", to=" ")}}</p>
+                    <h1>{{related.character}}</h1>
+
+                    <hr>
+
+                    <p>{{second_related.name | replace(from="_", to=" ")}}</p>
+                    <p>over</p>
+                    <p>{{first_related.name | replace(from="_", to=" ")}}</p>
+
+                    <p>{{related.shao_yong_order}}</p>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="cover-heading">CORE PRIMARY</h4>
+                    <p>{{core_primary.king_wen_order}}</p>
+                    <p>{{core_primary.hatcher}}</p>
+                    <p>{{core_primary.binary}}</p>
+
+                    <h1 class="big_font">{{core_primary_second.image}}</h1>
+                    <p>{{core_primary_second.name}}</p>
+                    <h1 class="big_font">{{core_primary_first.image}}</h1>
+                    <p>{{core_primary_first.name}}</p>
+
+                    <h1 class="big_font">{{core_primary.gua}}</h1>
+                    <p>{{core_primary.pin_yin}}</p>
+                    <h1>{{core_primary.character}}</h1>
+
+                    <hr>
+
+                    <p>{{core_primary_second.name}}</p>
+                    <p>over</p>
+                    <p>{{core_primary_first.name}}</p>
+
+                    <p>{{core_primary.shao_yong_order}}</p>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="cover-heading">CORE RELATED</h4>
+                    <p>{{core_related.king_wen_order}}</p>
+                    <p>{{core_related.hatcher}}</p>
+                    <p>{{core_related.binary}}</p>
+
+                    <h1 class="big_font">{{core_related_second.image}}</h1>
+                    <p>{{core_related_second.name}}</p>
+                    <h1 class="big_font">{{core_related_first.image}}</h1>
+                    <p>{{core_related_first.name}}</p>
+
+                    <h1 class="big_font">{{core_related.gua}}</h1>
+                    <p>{{core_related.pin_yin}}</p>
+                    <h1>{{core_related.character}}</h1>
+
+                    <hr>
+
+                    <p>{{core_related_second.name}}</p>
+                    <p>over</p>
+                    <p>{{core_related_first.name}}</p>
+
+                    <p>{{core_related.shao_yong_order}}</p>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <p>{{generative_answer}}</p><br><br>
+
+            <h4>Traditional Interpretations</h4>
+            <br>
+            <br>
+
+            <h4>King Wen's Decision Primary</h4>
+            <br>
+            {{hexagram.judgment}}
+            <br>
+            <br>
+
+            <h4>The Image Primary</h4>
+            <br>
+            {{hexagram.image}}
+            <br>
+            <br>
+
+            <h4>Duke of Zhou Primary</h4>
+            <br>
+            {{hexagram.lines}}
+            <br>
+            <br>
+
+            <hr>
+
+            <h4>King Wen's Decision Related</h4>
+            <br>
+            {{related.judgment}}
+            <br>
+            <br>
+
+            <h4>The Image Related</h4>
+            <br>
+            {{related.image}}
+            <br>
+            <br>
+
+            <h4>Duke of Zhou Related</h4>
+            <br>
+            {{related.lines}}
+            <br>
+            <br>
+        </div>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <br>
+            <p><a href="/">Back to I ORACLE</a></p>
+        </div>
+    </footer>
+</div>
+{% endblock content %}
+

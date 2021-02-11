@@ -1,0 +1,54 @@
+{% extends "layout" %}
+
+{% block content %}
+<div class="text-center cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <div class="container" id="main_container">
+            <div class="row">
+                <div class="col-md-2">
+                    <!--
+                    <img src="/static/img/solid-fwd.gif" id="loader" width=42px>
+                    -->
+                    <h1>☰</h1>
+                </div>
+                <div class="col-md-8">
+                    <h1 class="cover-heading">I ORACLE</h1>
+                </div>
+                <div class="col-md-2">
+                    <!--
+                    <img src="/static/img/solid-bwd.gif" id="loader" width=42px>
+                    -->
+                    <h1>☷</h1>
+                </div>
+            </div>
+        </div>
+
+        <h4 id="head1">NATURE BASED ETHICAL GUIDANCE SYSTEM</h4>
+        <h4 id="head2">FOR MAN AND MACHINE</h4>
+        <hr id="main_hr">
+        <p class="lead">The I ORACLE is a hybrid human/plant/machine driven divination system based on the I Ching.
+        <br>To perform your reading, formulate a question you might have that you have been unable to resolve through conventional means. Make it as specific and as clear as possible, asking ‘if i were to solve the problem in this particular way’ or ‘if this were to be the outcome’ rather than ’how should something happen’.
+        <br><br>Type it into the question box below, along with your email, and take a seat near the bonsai. Press commit when you are ready to focus on your question and the tree. As your energy passes through the bonsai, you and the tree will determine the results of your reading, which will be delivered as a hexagram (6 lines) answer. This hexagram is formed by a set of three lines, created line by line on the overhead LED’s, each representing an element. After each element that forms your hexagram is determined, it is expressed to the bonsai physically by the I Oracle system. During that time, the bonsai will determine if any of three lines of that element are ‘changing’.
+        <br><br>Once your reading is complete, you will receive a transcription of the ancient texts of the I Ching related to your hexagrams on your phone as well as over email. The binary (yin/yang) values of your reading as well as your question will be logged into a the I Oracle generative system, which interprets a response directly through the fundamental rules of I Ching (i-theory). This modernized and personalised answer be sent to you over email in due course.
+        <br><br>Thank you for participating in the creating of this project, designed to put nature at the helm of technology and help guide ethical behaviour in humans and machine.
+        <br></p>
+
+        <img src="/static/img/solid-fwd.gif" id="loader" style="display: none;">
+
+        <form id="commit_form" onsubmit="commit()" action="/question" method="post" accept-charset="utf-8" class="question-form">
+            <input type="hidden" name="_method" value="post" />
+
+            <input type="text" class="form-control" name="email" placeholder="Your email" required
+                                                                 oninvalid="this.setCustomValidity('Please enter email')"
+                                                                 oninput="setCustomValidity('')"></input>
+
+            <textarea class="form-control" rows="4" cols="45" name="question" placeholder="Your question" required
+                                                                              oninvalid="this.setCustomValidity('Please enter question')"
+                                                                              oninput="setCustomValidity('')"></textarea>
+
+            <button class="btn btn-lg btn-secondary fw-bold border-white bg-white" type="submit">Commit</button>
+        </form>
+        <br>
+    </main>
+</div>
+{% endblock content %}
