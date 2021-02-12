@@ -20,10 +20,7 @@ mod views;
 
 use rocket_contrib::serve::StaticFiles;
 use rocket_contrib::templates::Template;
-use std::{env, fs, path::Path, process};
-
-const IORACLE_SEND: &str = "/tmp/ioracle.send";
-const IORACLE_RETURN: &str = "/tmp/ioracle.return";
+use std::{env, process};
 
 #[database("ioracle")]
 pub struct Db(diesel::SqliteConnection);
@@ -46,13 +43,6 @@ fn main() {
         println!("{}", err);
         process::exit(1);
     });
-
-    if Path::new(IORACLE_RETURN).exists() {
-        if let Err(error) = fs::remove_file(IORACLE_RETURN) {
-            println!("{}", error);
-            process::exit(1);
-        };
-    }
 
     rocket::ignite()
         .manage(config)

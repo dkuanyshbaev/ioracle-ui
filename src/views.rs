@@ -7,6 +7,10 @@ use rocket::State;
 use rocket_contrib::templates::Template;
 use std::io::{prelude::*, BufRead, BufReader};
 use std::os::unix::net::{UnixListener, UnixStream};
+use std::{fs, path::Path, process};
+
+const IORACLE_SEND: &str = "/tmp/ioracle.send";
+const IORACLE_RETURN: &str = "/tmp/ioracle.return";
 
 #[derive(FromForm)]
 pub struct Data {
@@ -46,13 +50,20 @@ pub fn question(
     config: State<Config>,
     data: Form<Data>,
 ) -> IOracleResult<Redirect> {
-    if let Ok(mut stream) = UnixStream::connect(crate::IORACLE_SEND) {
+    if let Ok(mut stream) = UnixStream::connect(IORACLE_SEND) {
         stream.write_all(b"read")?;
     };
 
+    if Path::new(IORACLE_RETURN).exists() {
+        if let Err(error) = fs::remove_file(IORACLE_RETURN) {
+            println!("{}", error);
+            process::exit(1);
+        };
+    }
+
     let mut location = "/".to_string();
 
-    if let Ok(listener) = UnixListener::bind(crate::IORACLE_RETURN) {
+    if let Ok(listener) = UnixListener::bind(IORACLE_RETURN) {
         for stream in listener.incoming() {
             if let Ok(stream) = stream {
                 if let Some(result) = BufReader::new(stream).lines().nth(0) {
