@@ -14,6 +14,7 @@ extern crate diesel;
 
 mod errors;
 mod iching;
+mod lang;
 mod models;
 mod schema;
 mod views;
@@ -43,6 +44,12 @@ fn main() {
         println!("{}", err);
         process::exit(1);
     });
+
+    //------------------------------------------------
+
+    println!("----> {:?}", lang::core::yang::NOUN);
+
+    //------------------------------------------------
 
     rocket::ignite()
         .manage(config)
