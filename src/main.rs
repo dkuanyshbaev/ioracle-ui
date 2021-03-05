@@ -45,12 +45,6 @@ fn main() {
         process::exit(1);
     });
 
-    //------------------------------------------------
-
-    println!("----> {:?}", lang::core::yang::NOUN);
-
-    //------------------------------------------------
-
     rocket::ignite()
         .manage(config)
         .attach(Db::fairing())
