@@ -483,3 +483,105 @@ pub mod bigram {
         ];
     }
 }
+
+pub mod hexagram {
+    pub enum Line {
+        Yin,
+        Yang,
+    }
+    pub struct Words<'a> {
+        Noun: &'a str,
+        Verb: &'a str,
+        Adjective: &'a str,
+    }
+    pub struct HLine<'a> {
+        Correctness: Line,
+        Binary: u8,
+        Quality: Words<'a>,
+        Social_Position: Words<'a>,
+    }
+    pub const TOP: HLine = HLine {
+        Correctness: Line::Yin,
+        Binary: 0,
+        Quality: Words {
+            Noun: "Truth",
+            Verb: "Realising",
+            Adjective: "Superior",
+        },
+        Social_Position: Words {
+            Noun: "Teacher",
+            Verb: "Guiding",
+            Adjective: "Sage",
+        },
+    };
+    pub const FIFTH: HLine = HLine {
+        Correctness: Line::Yang,
+        Binary: 1,
+        Quality: Words {
+            Noun: "Expertise",
+            Verb: "Ascending",
+            Adjective: "Special",
+        },
+        Social_Position: Words {
+            Noun: "King",
+            Verb: "Ruling",
+            Adjective: "Regal",
+        },
+    };
+    pub const FOURTH: HLine = HLine {
+        Correctness: Line::Yin,
+        Binary: 0,
+        Quality: Words {
+            Noun: "Risk",
+            Verb: "Readying",
+            Adjective: "Precarious",
+        },
+        Social_Position: Words {
+            Noun: "Minister",
+            Verb: "Instructing",
+            Adjective: "Judicial",
+        },
+    };
+    pub const THIRD: HLine = HLine {
+        Correctness: Line::Yang,
+        Binary: 1,
+        Quality: Words {
+            Noun: "Vocation",
+            Verb: "Waiting",
+            Adjective: "Insecure",
+        },
+        Social_Position: Words {
+            Noun: "Lord",
+            Verb: "Leading",
+            Adjective: "Distinguished",
+        },
+    };
+    pub const SECOND: HLine = HLine {
+        Correctness: Line::Yin,
+        Binary: 0,
+        Quality: Words {
+            Noun: "Education",
+            Verb: "Learning",
+            Adjective: "Sheltered",
+        },
+        Social_Position: Words {
+            Noun: "Official",
+            Verb: "Helping",
+            Adjective: "Administrative",
+        },
+    };
+    pub const INITIAL: HLine = HLine {
+        Correctness: Line::Yang,
+        Binary: 1,
+        Quality: Words {
+            Noun: "Transition",
+            Verb: "Transforming",
+            Adjective: "Transient",
+        },
+        Social_Position: Words {
+            Noun: "Folk",
+            Verb: "Following",
+            Adjective: "Ordinary",
+        },
+    };
+}
